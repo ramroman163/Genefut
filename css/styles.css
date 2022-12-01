@@ -1,0 +1,264 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+    background-color: rgb(57, 165, 253);
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: rgb(138, 201, 252);
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-track{
+    transition: .3s ease;
+}
+
+body{
+    background: rgb(0,129,175);
+    background: linear-gradient(90deg, rgba(0,129,175,1) 21%, rgba(0,171,231,1) 62%);
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header{
+    color: white;
+    min-height: 11vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenido-header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    position: relative;
+    margin: auto 0;
+}
+
+h1{
+    margin: 0 auto;
+}
+
+.volver-inicio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 8px;
+    margin-left: 10px;
+    border-radius: 100%;
+    text-decoration: none;
+    color: white;
+    transition: .3s ease;
+}
+
+.volver-inicio:hover{
+    background: rgba(35, 41, 43, 0.2);
+}
+
+main{
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    margin-bottom: 11vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contenedor-botones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.botones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer{
+    width: 100%;
+    color: white;
+    min-height: 11vh;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.datos-footer{
+    margin: auto 0;
+}
+
+.linea{
+    width: 98%;
+    height: 2px;
+    background: white;
+}
+
+.botones > a{
+    padding: 20px 40px;
+    border: 1px solid white;
+    border-radius: 25px;
+    text-decoration: none;
+    color: white;
+    transition: .3s ease;
+}
+
+.botones > a:hover{
+    cursor: pointer;
+    background: rgba(255,255,255,0.2);
+    padding: 20px 45px;
+}
+
+#formulario-jugadores{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    width: 70%;
+}
+
+.columnas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.columna-jugadores{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 40%;
+}
+
+.columna-jugadores > input{
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    height: 1.75rem;
+    width: 100%;
+    border-radius: 2px;
+    background-color: transparent;
+   
+}
+
+.columna-jugadores > input::placeholder{
+    color: rgb(200,200,200);
+}
+
+.columna-jugadores > input:focus{
+    outline: none;
+}
+
+.botones-form{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    min-width: 90px;
+    color: white;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 15px;
+    transition: .3s ease;
+}
+
+#generar-equipo:hover{
+    background: rgb(171, 255, 171, 0.2);
+    padding: 10px 25px;
+}
+
+#limpiar-equipo:hover{
+    background: rgba(255, 42, 42, 0.2);
+    padding: 10px 25px;
+}
+
+.contenedor-equipos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    color: white;
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+.equipos{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.equipos > p{
+    text-align: center;
+    padding: 10px;
+    width: 90%;
+    background: rgba(0, 128, 175, 0.555);
+    border-bottom: 1px solid white;
+}
+
+#linea-separadora{
+    display: none;
+}
+
+.equipos > h3{
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1279px) {
+    #formulario-jugadores{
+        width: 100%;
+    }
+
+    .columnas{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        justify-content: flex-start;
+    }
+
+    .columna-jugadores{
+        width: 90%;
+    }
+
+    .contenedor-equipos{
+        flex-direction: column;
+    }
+
+    .equipos{
+        width: 100%;
+    }
+}
