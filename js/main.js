@@ -30,12 +30,46 @@ var team1 = [];
 var team2 = [];
 
 function main(){
+    let correctForm = verifyInputs();
+    if(!correctForm){
+        return;
+    }
     resetProgram();
     countPlayers();
     getPlayers();
     generateTeams();
     showTeams();
 }
+
+function verifyInputs(){
+    resetProgram();
+    separateLine(false);
+
+    let validator = true;
+
+    let team1Container = document.getElementById("equipo1");
+    let team2Container = document.getElementById("equipo2");
+
+    resetElement(team1Container);
+    resetElement(team2Container);
+
+    let i = 0;
+    while(!!document.getElementById("jugador-n" + (i+1))){
+        let field = document.getElementById("jugador-n" + (i+1));
+        if(field.value == ''){
+            field.style.backgroundColor = "#934949";
+            validator = false;
+        }
+        else if(field.style.backgroundColor = "#934949"){
+            field.style.backgroundColor = "";
+        }
+
+        i++;
+    }
+
+    return validator;
+}
+
 
 function resetProgram(){
     playersName = [];
@@ -86,9 +120,19 @@ function generateTeams(){
     }
 }
 
-function showTeams(){
+function separateLine(active){
     let separateLine = document.getElementById("linea-separadora");
-    separateLine.style.display = "block";
+    
+    if(active){
+        separateLine.style.display = "block";
+    }
+    else{
+        separateLine.style.display = "none";
+    }
+}
+
+function showTeams(){
+    separateLine(true);
 
     let team1Container = document.getElementById("equipo1");
     let team2Container = document.getElementById("equipo2");
@@ -134,6 +178,16 @@ function verifyRepeated(randomNumber, numbers){
 function resetForm(){
     let form = document.getElementById("formulario-jugadores");
     form.reset();
+
+    let i = 0;
+    while(!!document.getElementById("jugador-n" + (i+1))){
+        let field = document.getElementById("jugador-n" + (i+1));
+        if(field.style.backgroundColor = "#934949"){
+            field.style.backgroundColor = "";
+        }
+
+        i++;
+    }
 }
 
 function resetElement(element){
