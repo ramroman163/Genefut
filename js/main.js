@@ -39,10 +39,13 @@ function main(){
     getPlayers();
     generateTeams();
     showTeams();
+    shareSection(true);
+    shareWhatsapp();
 }
 
 function verifyInputs(){
     resetProgram();
+    shareSection(false);
     separateLine(false);
 
     let validator = true;
@@ -69,7 +72,6 @@ function verifyInputs(){
 
     return validator;
 }
-
 
 function resetProgram(){
     playersName = [];
@@ -118,6 +120,40 @@ function generateTeams(){
             team2.push(playersName[i]);
         }
     }
+}
+
+function shareSection(active){
+    let shareSection = document.getElementById("seccion-compartir");
+
+    if(active){
+        shareSection.style.display = "flex";
+    }
+    else{
+        shareSection.style.display = "none";
+    }
+}
+
+function shareWhatsapp(){
+    let enter = "%0A";
+    let space = "%20";
+    let link = "https://api.whatsapp.com/send?text="
+
+    link += "Equipo"+space+"1:"+enter;
+
+    team1.forEach((player)=>{
+        link+=(player+enter);
+    });
+
+    link += "Equipo"+space+"2:"+enter+enter;
+
+    team2.forEach((player)=>{
+        link+=(player+enter);
+    });
+
+    link += "Hecho con Genefut";
+
+    let elementA = document.getElementById("compartir-whatsapp");
+    elementA.href = link;
 }
 
 function separateLine(active){
