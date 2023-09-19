@@ -7,25 +7,32 @@
     <script defer src="./main.js"></script>
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
     <title>GeneFut</title>
 </head>
 <body>
     <header>
-        <div class="contenido-header">
-            <h1>GeneFut</h1>
+        <div class="header__content">
+            <img class="header__icon" src="./img/ball.svg" alt="pelota">
+            <h2>GeneFut</h2>
         </div>
-        <div class="linea"></div>
+        <div class="line"></div>
     </header>
     <main>
-        <div class="botones">
-            <a href="./html/f5page.html">Futbol 5</a>
-            <a href="./html/f7page.html">Futbol 7</a>
-        </div>
+        <section class="title">
+            <h1 class="title__paragraph">Realiza el armado de equipos de manera fácil y rápida</h1>
+            <p class="title__help">Elige una categoría de las disponibles</p>
+        </section>
+        <section class="buttons_container">
+            <a class="buttons__button" href="./html/f5page.html">Fútbol 5</a>
+            <a class="buttons__button" href="./html/f7page.html">Fútbol 7</a>
+        </section>
     </main>
     <footer>
-        <div class="linea"></div>
-        <div class="datos-footer">
-            <p>Román Martinez &copy</p>
+        <div class="line"></div>
+        <div class="footer__credits">
+            <p>Realizado por Román Martinez</p>
+            <a class="footer__icon" href="https://github.com/ramroman163" target="_blank"><img src="./img/GitHub Icon.svg" alt="logo-github"></a>
         </div>
     </footer>
 </body>

@@ -5,6 +5,15 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+:root{
+    --white: rgb(255,255,255);
+    --body-bg-color: #3D5A80;
+    --h-f-bg-color: #1F3A5F;
+    --font-open-sans: 'Open Sans', sans-serif;
+}
+
+/* Scrollbar */
+
 ::-webkit-scrollbar{
     width: 10px;
     background-color: rgb(57, 165, 253);
@@ -20,8 +29,7 @@
 }
 
 body{
-    background: rgb(0,129,175);
-    background: linear-gradient(90deg, rgba(0,129,175,1) 21%, rgba(0,171,231,1) 62%);
+    background: var(--body-bg-color);
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -29,59 +37,83 @@ body{
     align-items: center;
 }
 
+/* Header */
+
 header{
-    color: white;
+    background: var(--h-f-bg-color);
+    color: var(--white);
     min-height: 11vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: var(--font-open-sans);
+    font-weight: 800;
 }
 
-.contenido-header{
+.header__content{
     width: 100%;
+    position: relative;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: left;
-    position: relative;
+    align-items: left;
+    gap: .8rem;
+    padding-left: 2rem;
     margin: auto 0;
+    animation: opacityEnter 1s ease;
 }
 
-h1{
-    margin: 0 auto;
+@keyframes SlideEnter {
+    0%{
+        margin-right: 30rem;
+        opacity: 0.1;
+    }
+
+    50%{
+        opacity: 0.3;
+    }
+    
+    100%{
+        margin-right: 0rem;
+        opacity: 1;
+    }
 }
+
+/* Return */
 
 .volver-inicio{
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    padding: 8px;
+    padding: 10px;
     margin-left: 10px;
     border-radius: 100%;
     text-decoration: none;
-    color: white;
+    color: var(--white);
     transition: .3s ease;
 }
 
 .volver-inicio:hover{
     background: rgba(35, 41, 43, 0.2);
+    transform: scale(1.30);
 }
+
+/* Main */
 
 main{
     position: relative;
     width: 100%;
+    padding: 0 2rem;
     min-height: 80vh;
     margin-bottom: 11vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 1.5rem;
 }
 
-.contenedor-botones{
+.contenedor-botones{ /*?*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -89,48 +121,93 @@ main{
     margin-bottom: 20px;
 }
 
-.botones{
+.buttons_container{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
+    animation: opacityEnter 1.3s ease;
 }
 
-footer{
-    width: 100%;
+.buttons_container > a{
+    padding: 20px 40px;
+    border: 1px solid var(--white);
+    border-radius: 25px;
+    text-decoration: none;
+    color: var(--white);
+    transition: .3s ease;
+    font-family: var(--font-open-sans);
+    font-weight: 600;
+}
+
+.buttons_container > a:hover{
+    cursor: pointer;
+    background: rgba(255,255,255,0.2);
+    padding: 20px 45px;
+}
+
+@keyframes opacityEnter {
+    0%{
+        filter: blur(1rem);
+        opacity: 0.1;
+    }
+    100%{
+        filter: blur(0rem);
+        opacity: 1;
+    }
+}
+
+/* Body */
+
+.title{
     color: white;
+    font-family: var(--font-open-sans);
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: opacityEnter 1.3s ease;
+}
+
+.title__paragraph{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* Footer */
+
+footer{
+    background: var(--h-f-bg-color);
+    width: 100%;
+    color: var(--white);
     min-height: 11vh;
     position: absolute;
     bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: var(--font-open-sans);
+    font-weight: 600;
 }
 
-.datos-footer{
+.footer__credits{
     margin: auto 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
+    animation: opacityEnter 1s ease;
 }
 
-.linea{
+.footer__icon{
+    line-height: 90%;
+}
+
+/* Se usa en varias partes */
+
+.line{
     width: 98%;
     height: 2px;
-    background: white;
-}
-
-.botones > a{
-    padding: 20px 40px;
-    border: 1px solid white;
-    border-radius: 25px;
-    text-decoration: none;
-    color: white;
-    transition: .3s ease;
-}
-
-.botones > a:hover{
-    cursor: pointer;
-    background: rgba(255,255,255,0.2);
-    padding: 20px 45px;
+    background: var(--white);
 }
 
 #formulario-jugadores{
@@ -162,8 +239,8 @@ footer{
 .columna-jugadores > input{
     padding: 5px;
     border: none;
-    border-bottom: 2px solid white;
-    color: white;
+    border-bottom: 2px solid var(--white);
+    color: var(--white);
     height: 1.75rem;
     width: 100%;
     border-radius: 2px;
@@ -185,9 +262,9 @@ footer{
     cursor: pointer;
     padding: 10px 20px;
     min-width: 90px;
-    color: white;
+    color: var(--white);
     background: transparent;
-    border: 1px solid white;
+    border: 1px solid var(--white);
     border-radius: 15px;
     transition: .3s ease;
 }
@@ -208,7 +285,7 @@ footer{
     justify-content: center;
     align-items: center;
     gap: 30px;
-    color: white;
+    color: var(--white);
     width: 90%;
     margin-bottom: 20px;
 }
@@ -226,7 +303,7 @@ footer{
     padding: 10px;
     width: 90%;
     background: rgba(0, 128, 175, 0.555);
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid var(--white);
 }
 
 #linea-separadora{
@@ -239,7 +316,7 @@ footer{
 
 #seccion-compartir{
     width: 100%;
-    color: white;
+    color: var(--white);
     display: none;
     gap: 10px;
     flex-direction: column;
@@ -268,7 +345,7 @@ footer{
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: white;
+    color: var(--white);
 }
 
 @media screen and (max-width: 1279px) {
