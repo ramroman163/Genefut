@@ -6,23 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../css/styles.css">
-    <script defer src="../js/main.js"></script>
     <title>Equipos F7</title>
 </head>
 <body>
-    <header>
-        <div class="contenido-header">
-            <a href="../index.html" class="volver-inicio">
+    <header class="header">
+        <div class="header__content">
+            <a href="../index.html" class="header__return">
                 <i class='bx bx-arrow-back'></i>
             </a>
             <h1>Jugadores</h1>
         </div>
-        <div class="linea"></div>
+        <div class="line"></div>
     </header>
-    <main>
-        <form id="formulario-jugadores" class="input-jugadores">
-            <div class="columnas">
-                <div class="columna-jugadores">
+    <main class="main">
+        <form id="formulario-jugadores" class="players_form">
+            <div class="players_form__columns">
+                <div class="players_form__column">
                     <input type="text" autocomplete="off" id="jugador-n1" tabindex="1" class="focus-next" placeholder="Jugador N°1">
                     <input type="text" autocomplete="off" id="jugador-n2" tabindex="2" class="focus-next" placeholder="Jugador N°2">
                     <input type="text" autocomplete="off" id="jugador-n3" tabindex="3" class="focus-next" placeholder="Jugador N°3">
@@ -31,7 +30,7 @@
                     <input type="text" autocomplete="off" id="jugador-n6" tabindex="6" class="focus-next" placeholder="Jugador N°6">
                     <input type="text" autocomplete="off" id="jugador-n7" tabindex="7" class="focus-next" placeholder="Jugador N°7">
                 </div>
-                <div class="columna-jugadores">
+                <div class="players_form__column">
                     <input type="text" autocomplete="off" id="jugador-n8" tabindex="8" class="focus-next" placeholder="Jugador N°8">
                     <input type="text" autocomplete="off" id="jugador-n9" tabindex="9" class="focus-next" placeholder="Jugador N°9">
                     <input type="text" autocomplete="off" id="jugador-n10" tabindex="10" class="focus-next" placeholder="Jugador N°10">
@@ -42,27 +41,30 @@
                 </div>
             </div>
         </form>
-        <div class="contenedor-botones">
-            <button class="botones-form" id="generar-equipo">Generar</button>
-            <button class="botones-form" id="limpiar-equipo">Limpiar</button>
-        </div>
+        <section class="buttons_container buttons_container--teams">
+            <button class="buttons_form" id="generar-equipo">Generar</button>
+            <button class="buttons_form" id="limpiar-equipo">Limpiar</button>
+        </section>
         <div class="linea" id="linea-separadora"></div>
-        <div class="contenedor-equipos">
+        <section class="contenedor-equipos">
             <div id="equipo1" class="equipos"></div>
             <div id="equipo2" class="equipos"></div>
-        </div>
-        <div id="seccion-compartir">
+        </section>
+        <section id="seccion-compartir" class="share">
             <h3>Compartir</h3>
-            <div class="botones-compartir">
-                <a class="compartir" id="compartir-whatsapp" target="_blank" href=""><i class='bx bxl-whatsapp'></i></a>
+            <div class="share__button">
+                <a class="share__link" id="compartir-whatsapp" target="_blank" href=""><i class='bx bxl-whatsapp'></i></a>
             </div>
-        </div>
+        </section>
     </main>
     <footer>
-        <div class="linea"></div>
-        <div class="datos-footer">
-            <p>Román Martinez &copy</p>
+        <div class="line"></div>
+        <div class="footer__credits">
+            <p>Realizado por Román Martinez</p>
+            <a class="footer__icon" href="https://github.com/ramroman163" target="_blank"><img src="../img/GitHub Icon.svg" alt="logo-github"></a>
         </div>
     </footer>
+
+    <script src="../js/main.js"></script>
 </body>
 </html>
