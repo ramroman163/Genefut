@@ -6,65 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/loader.css">
     <title>Equipos F7</title>
 </head>
 <body>
-    <header class="header">
-        <div class="header__content">
-            <a href="../index.html" class="header__return">
-                <i class='bx bx-arrow-back'></i>
-            </a>
-            <h1>Jugadores</h1>
-        </div>
-        <div class="line"></div>
-    </header>
-    <main class="main">
-        <form id="formulario-jugadores" class="players_form">
-            <div class="players_form__columns">
-                <div class="players_form__column">
-                    <input type="text" autocomplete="off" id="jugador-n1" tabindex="1" class="focus-next" placeholder="Jugador N°1">
-                    <input type="text" autocomplete="off" id="jugador-n2" tabindex="2" class="focus-next" placeholder="Jugador N°2">
-                    <input type="text" autocomplete="off" id="jugador-n3" tabindex="3" class="focus-next" placeholder="Jugador N°3">
-                    <input type="text" autocomplete="off" id="jugador-n4" tabindex="4" class="focus-next" placeholder="Jugador N°4">
-                    <input type="text" autocomplete="off" id="jugador-n5" tabindex="5" class="focus-next" placeholder="Jugador N°5">
-                    <input type="text" autocomplete="off" id="jugador-n6" tabindex="6" class="focus-next" placeholder="Jugador N°6">
-                    <input type="text" autocomplete="off" id="jugador-n7" tabindex="7" class="focus-next" placeholder="Jugador N°7">
-                </div>
-                <div class="players_form__column">
-                    <input type="text" autocomplete="off" id="jugador-n8" tabindex="8" class="focus-next" placeholder="Jugador N°8">
-                    <input type="text" autocomplete="off" id="jugador-n9" tabindex="9" class="focus-next" placeholder="Jugador N°9">
-                    <input type="text" autocomplete="off" id="jugador-n10" tabindex="10" class="focus-next" placeholder="Jugador N°10">
-                    <input type="text" autocomplete="off" id="jugador-n11" tabindex="11" class="focus-next" placeholder="Jugador N°11">
-                    <input type="text" autocomplete="off" id="jugador-n12" tabindex="12" class="focus-next" placeholder="Jugador N°12">
-                    <input type="text" autocomplete="off" id="jugador-n13" tabindex="13" class="focus-next" placeholder="Jugador N°13">
-                    <input type="text" autocomplete="off" id="jugador-n14" tabindex="14" class="focus-next" placeholder="Jugador N°14">
-                </div>
+    <section class="loader_section">
+        <span class="loader"></span>
+    </section>
+    <section class="body">
+        <header class="header">
+            <div class="header__content">
+                <a href="../index.html" class="header__return">
+                    <i class='bx bx-arrow-back'></i>
+                </a>
+                <h1>Jugadores</h1>
             </div>
-        </form>
-        <section class="buttons_container buttons_container--teams">
-            <button class="buttons_form" id="generar-equipo">Generar</button>
-            <button class="buttons_form" id="limpiar-equipo">Limpiar</button>
-        </section>
-        <div class="linea" id="linea-separadora"></div>
-        <section class="contenedor-equipos">
-            <div id="equipo1" class="equipos"></div>
-            <div id="equipo2" class="equipos"></div>
-        </section>
-        <section id="seccion-compartir" class="share">
-            <h3>Compartir</h3>
-            <div class="share__button">
-                <a class="share__link" id="compartir-whatsapp" target="_blank" href=""><i class='bx bxl-whatsapp'></i></a>
+            <div class="line"></div>
+        </header>
+        <main class="main">
+            <form class="players_form">
+                <div class="players_form__columns">
+                    <div class="players_form__column">
+                        <input type="text" autocomplete="off" id="player-n1" tabindex="1" class="focus-next" placeholder="Jugador N°1">
+                        <input type="text" autocomplete="off" id="player-n2" tabindex="2" class="focus-next" placeholder="Jugador N°2">
+                        <input type="text" autocomplete="off" id="player-n3" tabindex="3" class="focus-next" placeholder="Jugador N°3">
+                        <input type="text" autocomplete="off" id="player-n4" tabindex="4" class="focus-next" placeholder="Jugador N°4">
+                        <input type="text" autocomplete="off" id="player-n5" tabindex="5" class="focus-next" placeholder="Jugador N°5">
+                        <input type="text" autocomplete="off" id="player-n6" tabindex="6" class="focus-next" placeholder="Jugador N°6">
+                        <input type="text" autocomplete="off" id="player-n7" tabindex="7" class="focus-next" placeholder="Jugador N°7">
+                    </div>
+                    <div class="players_form__column">
+                        <input type="text" autocomplete="off" id="player-n8" tabindex="8" class="focus-next" placeholder="Jugador N°8">
+                        <input type="text" autocomplete="off" id="player-n9" tabindex="9" class="focus-next" placeholder="Jugador N°9">
+                        <input type="text" autocomplete="off" id="player-n10" tabindex="10" class="focus-next" placeholder="Jugador N°10">
+                        <input type="text" autocomplete="off" id="player-n11" tabindex="11" class="focus-next" placeholder="Jugador N°11">
+                        <input type="text" autocomplete="off" id="player-n12" tabindex="12" class="focus-next" placeholder="Jugador N°12">
+                        <input type="text" autocomplete="off" id="player-n13" tabindex="13" class="focus-next" placeholder="Jugador N°13">
+                        <input type="text" autocomplete="off" id="player-n14" tabindex="14" class="focus-next" placeholder="Jugador N°14">
+                    </div>
+                </div>
+            </form>
+            <section class="buttons_container buttons_container--teams">
+                <button class="buttons_form generate-teams" value="Generar">Generar</button>
+                <button class="buttons_form reset-teams" value="Limpiar">Limpiar</button>
+            </section>
+            <div class="line line--teams"></div>
+            <section class="teams_container">
+                <div id="team1" class="teams"></div>
+                <div id="team2" class="teams"></div>
+            </section>
+            <section class="share">
+                <h3>Compartir</h3>
+                <div class="share__button">
+                    <a class="share__link" target="_blank" href=""><i class='bx bxl-whatsapp'></i></a>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="line"></div>
+            <div class="footer__credits">
+                <p>Realizado por Román Martinez</p>
+                <a class="footer__icon" href="https://github.com/ramroman163" target="_blank"><img src="../img/GitHub Icon.svg" alt="logo-github"></a>
             </div>
-        </section>
-    </main>
-    <footer>
-        <div class="line"></div>
-        <div class="footer__credits">
-            <p>Realizado por Román Martinez</p>
-            <a class="footer__icon" href="https://github.com/ramroman163" target="_blank"><img src="../img/GitHub Icon.svg" alt="logo-github"></a>
-        </div>
-    </footer>
+        </footer>
+    </section>
 
     <script src="../js/main.js"></script>
+    <script src="../js/loader.js"></script>
 </body>
 </html>

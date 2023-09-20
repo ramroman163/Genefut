@@ -1,9 +1,11 @@
-var generateButton = document.getElementById("generar-equipo");
+/* Botones que controlan el flujo en la generación */
+let generateButton = document.querySelector(".generate-teams");
 generateButton.addEventListener("click", () => main());
 
-var resetButton = document.getElementById("limpiar-equipo");
+let resetButton = document.querySelector(".reset-teams");
 resetButton.addEventListener("click", () => resetForm());
 
+/* Navegar entre inputs */
 document.addEventListener("keydown", function(entry){
     if(entry.key !== 'Enter'){
         return;
@@ -24,11 +26,17 @@ document.addEventListener("keydown", function(entry){
     }
 });
 
+/* Constantes */
+
+const errorColor = "#934949";
+
+/* Variables globales */
 var playersName = [];
 var amountOfPlayers = 0;
 var team1 = [];
 var team2 = [];
 
+/* Funcion principal */
 function main(){
     let correctForm = verifyInputs();
     if(!correctForm){
@@ -43,6 +51,7 @@ function main(){
     shareWhatsapp();
 }
 
+/* Verificar si los inputs están rellenos */
 function verifyInputs(){
     resetProgram();
     shareSection(false);
@@ -50,20 +59,21 @@ function verifyInputs(){
 
     let validator = true;
 
-    let team1Container = document.getElementById("equipo1");
-    let team2Container = document.getElementById("equipo2");
+    let team1Container = document.getElementById("team1");
+    let team2Container = document.getElementById("team2");
 
     resetElement(team1Container);
     resetElement(team2Container);
 
     let i = 0;
-    while(!!document.getElementById("jugador-n" + (i+1))){
-        let field = document.getElementById("jugador-n" + (i+1));
+    /* Doble negacion para asignar un valor booleano a lo devuelto por el getElement */
+    while(!!document.getElementById("player-n" + (i+1))){
+        let field = document.getElementById("player-n" + (i+1));
         if(field.value == ''){
-            field.style.backgroundColor = "#934949";
+            field.style.backgroundColor = errorColor;
             validator = false;
         }
-        else if(field.style.backgroundColor = "#934949"){
+        else if(field.style.backgroundColor = errorColor){
             field.style.backgroundColor = "";
         }
 
@@ -73,6 +83,7 @@ function verifyInputs(){
     return validator;
 }
 
+/* Resetea las variables del programa */
 function resetProgram(){
     playersName = [];
     amountOfPlayers = 0;
@@ -80,22 +91,25 @@ function resetProgram(){
     team2 = [];
 }
 
+/* Funcion que cuenta la cantidad de jugadores */
 function countPlayers(){
     let i = 0;
-    while(!!document.getElementById("jugador-n" + (i+1))){
+    while(!!document.getElementById("player-n" + (i+1))){
         i++;
     }
     amountOfPlayers = i;
 }
 
+/* Funcion que obtiene todos los valores de los inputs */
 function getPlayers(){
     for(let i = 1; i <= amountOfPlayers; i++){
-        let player = document.getElementById("jugador-n" + i);
+        let player = document.getElementById("player-n" + i);
         let name = player.value;
         playersName.push(name);
     }
 }
 
+/* Funcion que genera aleatoriamente los equipos */
 function generateTeams(){
     let numbers = [];
     let randomNumber = 0;
@@ -104,7 +118,7 @@ function generateTeams(){
         let repeated = true;
         
         do{
-            randomNumber = getRandom();
+            randomNumber = getRandom(amountOfPlayers);
             repeated = verifyRepeated(randomNumber, numbers);
         }while(repeated);
 
@@ -122,8 +136,9 @@ function generateTeams(){
     }
 }
 
+/* Visualizar opcion de compartir */
 function shareSection(active){
-    let shareSection = document.getElementById("seccion-compartir");
+    let shareSection = document.querySelector(".share");
 
     if(active){
         shareSection.style.display = "flex";
@@ -133,6 +148,7 @@ function shareSection(active){
     }
 }
 
+/* Generar mensaje para Whatsapp */
 function shareWhatsapp(){
     let enter = "%0A";
     let space = "%20";
@@ -152,12 +168,13 @@ function shareWhatsapp(){
 
     link += "Hecho con Genefut";
 
-    let elementA = document.getElementById("compartir-whatsapp");
+    let elementA = document.querySelector(".share__link");
     elementA.href = link;
 }
 
+/* Mostrar u ocultar linea separadora */
 function separateLine(active){
-    let separateLine = document.getElementById("linea-separadora");
+    let separateLine = document.querySelector(".line--teams");
     
     if(active){
         separateLine.style.display = "block";
@@ -167,11 +184,12 @@ function separateLine(active){
     }
 }
 
+/* Funcion que permite visualizar los equipos */
 function showTeams(){
     separateLine(true);
 
-    let team1Container = document.getElementById("equipo1");
-    let team2Container = document.getElementById("equipo2");
+    let team1Container = document.getElementById("team1");
+    let team2Container = document.getElementById("team2");
 
     resetElement(team1Container);
     resetElement(team2Container);
@@ -186,19 +204,20 @@ function showTeams(){
 
     team2Container.appendChild(nameTeam2);
     
-    team1.forEach((jugador) => {
+    team1.forEach((player) => {
         let namePlayer = document.createElement("p");
-        namePlayer.textContent = jugador;
+        namePlayer.textContent = player;
         team1Container.appendChild(namePlayer);
     });
 
-    team2.forEach((jugador) => {
+    team2.forEach((player) => {
         let namePlayer = document.createElement("p");
-        namePlayer.textContent = jugador; 
+        namePlayer.textContent = player; 
         team2Container.appendChild(namePlayer);
     });
 }
 
+/* Verificar repetidos en la generación */
 function verifyRepeated(randomNumber, numbers){
     let boolean = false
 
@@ -211,14 +230,15 @@ function verifyRepeated(randomNumber, numbers){
     return boolean;
 }
 
+/* Reseteo de formulario */
 function resetForm(){
-    let form = document.getElementById("formulario-jugadores");
+    let form = document.querySelector(".players_form");
     form.reset();
 
     let i = 0;
-    while(!!document.getElementById("jugador-n" + (i+1))){
-        let field = document.getElementById("jugador-n" + (i+1));
-        if(field.style.backgroundColor = "#934949"){
+    while(!!document.getElementById("player-n" + (i+1))){
+        let field = document.getElementById("player-n" + (i+1));
+        if(field.style.backgroundColor = errorColor){
             field.style.backgroundColor = "";
         }
 
@@ -232,6 +252,6 @@ function resetElement(element){
     }
 }
 
-function getRandom() {
-    return Math.floor(Math.random() * 10);
+function getRandom(amountOfPlayers) {
+    return Math.floor(Math.random() * amountOfPlayers);
 }

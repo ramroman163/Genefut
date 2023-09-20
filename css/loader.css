@@ -1,6 +1,6 @@
 .loader_section{
     position: absolute;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     max-width: 100%;
     top: 0;
@@ -9,7 +9,7 @@
     align-items: center;
     background-color: #3D5A80;
     z-index: 999;
-    transition: all .5s .5s ease;
+    transition: all .1s .1s ease;
     opacity: 1;
     overflow: hidden;
 }

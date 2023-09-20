@@ -16,7 +16,7 @@
 
 ::-webkit-scrollbar{
     width: 10px;
-    background-color: rgb(57, 165, 253);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 ::-webkit-scrollbar-thumb{
@@ -27,6 +27,8 @@
 ::-webkit-scrollbar-track{
     transition: .3s ease;
 }
+
+/* Body */
 
 body{
     background: var(--body-bg-color);
@@ -56,11 +58,13 @@ body{
     position: relative;
     display: flex;
     flex-direction: row;
-    align-items: left;
+    align-items: center;
     gap: .8rem;
     padding-left: 2rem;
     margin: auto 0;
-    animation: opacityEnter 1s ease;
+    animation: opacityEnter .5s ease;
+    font-family: var(--font-open-sans);
+    font-weight: 800;
 }
 
 /* Header - animation */
@@ -121,7 +125,7 @@ body{
     align-items: center;
     justify-content: center;
     gap: 20px;
-    animation: opacityEnter 1.3s ease;
+    animation: opacityEnter .5s ease;
 }
 
 .buttons_container--teams{
@@ -165,7 +169,7 @@ body{
     font-family: var(--font-open-sans);
     text-align: center;
     margin-bottom: 2rem;
-    animation: opacityEnter 1.3s ease;
+    animation: opacityEnter .5s ease;
 }
 
 .title__paragraph{
@@ -195,7 +199,7 @@ footer{
     flex-direction: row;
     align-items: center;
     gap: .5rem;
-    animation: opacityEnter 1s ease;
+    animation: opacityEnter .5s ease;
 }
 
 .footer__icon{
@@ -220,6 +224,7 @@ footer{
     justify-content: flex-start;
     gap: 30px;
     width: 70%;
+    animation: opacityEnter 0.5s ease;
 }
 
 .players_form__columns{
@@ -247,7 +252,7 @@ footer{
     width: 100%;
     border-radius: 2px;
     background-color: transparent;
-   
+    font-size: 1rem;
 }
 
 .players_form__column > input::placeholder{
@@ -258,7 +263,7 @@ footer{
     outline: none;
 }
 
-/* Buttons form*/
+/* Buttons form */
 
 .buttons_form{
     border: none;
@@ -273,17 +278,19 @@ footer{
     transition: .3s ease;
 }
 
-#generar-equipo:hover{
+.generate-teams:hover{
     background: rgb(171, 255, 171, 0.2);
     padding: 10px 25px;
 }
 
-#limpiar-equipo:hover{
+.reset-teams:hover{
     background: rgba(255, 42, 42, 0.2);
     padding: 10px 25px;
 }
 
-.contenedor-equipos{
+/* Generated teams */
+
+.teams_container{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -294,7 +301,7 @@ footer{
     margin-bottom: 20px;
 }
 
-.equipos{
+.teams{
     width: 45%;
     display: flex;
     flex-direction: column;
@@ -302,7 +309,7 @@ footer{
     gap: 10px;
 }
 
-.equipos > p{
+.teams > p{
     text-align: center;
     padding: 10px;
     width: 90%;
@@ -310,11 +317,11 @@ footer{
     border-bottom: 1px solid var(--white);
 }
 
-#linea-separadora{
+.line--teams{
     display: none;
 }
 
-.equipos > h3{
+.teams > h3{
     margin: 0 auto;
 }
 
@@ -373,11 +380,11 @@ footer{
         width: 90%;
     }
 
-    .contenedor-equipos{
+    .teams_container{
         flex-direction: column;
     }
 
-    .equipos{
+    .teams{
         width: 100%;
     }
 }
