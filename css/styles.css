@@ -313,7 +313,9 @@ footer{
     text-align: center;
     padding: 10px;
     width: 90%;
-    background: rgba(0, 128, 175, 0.555);
+    background: #3D5A80;
+    font-size: 1rem;
+    font-family: var(--font-open-sans);
     border-bottom: 1px solid var(--white);
 }
 
