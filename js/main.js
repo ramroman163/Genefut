@@ -6,25 +6,29 @@ let resetButton = document.querySelector(".reset-teams");
 resetButton.addEventListener("click", () => resetForm());
 
 /* Navegar entre inputs */
-document.addEventListener("keydown", function(entry){
-    if(entry.key !== 'Enter'){
+document.addEventListener("keydown", function (entry) {
+    if (entry.key !== 'Enter') {
         return;
     }
 
     let elementFocus = entry.target;
 
-    if(!elementFocus.classList.contains("focus-next")){
+    if (!elementFocus.classList.contains("focus-next")) {
         return;
     }
 
     let tabIndex = elementFocus.tabIndex + 1;
-    let nextElement = document.querySelector('[tabindex="'+ tabIndex +'"]');
+    let nextElement = document.querySelector('[tabindex="' + tabIndex + '"]');
 
-    if(nextElement){
+    if (nextElement) {
         entry.preventDefault();
         nextElement.focus();
     }
 });
+
+document.querySelector('.team_save_button').addEventListener('click', () => saveTeams())
+
+/* */
 
 /* Constantes */
 
@@ -37,9 +41,9 @@ var team1 = [];
 var team2 = [];
 
 /* Funcion principal */
-function main(){
+function main () {
     let correctForm = verifyInputs();
-    if(!correctForm){
+    if (!correctForm) {
         return;
     }
     resetProgram();
@@ -52,7 +56,7 @@ function main(){
 }
 
 /* Verificar si los inputs están rellenos */
-function verifyInputs(){
+function verifyInputs () {
     resetProgram();
     shareSection(false);
     separateLine(false);
@@ -67,13 +71,13 @@ function verifyInputs(){
 
     let i = 0;
     /* Doble negacion para asignar un valor booleano a lo devuelto por el getElement */
-    while(!!document.getElementById("player-n" + (i+1))){
-        let field = document.getElementById("player-n" + (i+1));
-        if(field.value == ''){
+    while (!!document.getElementById("player-n" + (i + 1))) {
+        let field = document.getElementById("player-n" + (i + 1));
+        if (field.value == '') {
             field.style.backgroundColor = errorColor;
             validator = false;
         }
-        else if(field.style.backgroundColor = errorColor){
+        else if (field.style.backgroundColor = errorColor) {
             field.style.backgroundColor = "";
         }
 
@@ -84,7 +88,7 @@ function verifyInputs(){
 }
 
 /* Resetea las variables del programa */
-function resetProgram(){
+function resetProgram () {
     playersName = [];
     amountOfPlayers = 0;
     team1 = [];
@@ -92,17 +96,17 @@ function resetProgram(){
 }
 
 /* Funcion que cuenta la cantidad de jugadores */
-function countPlayers(){
+function countPlayers () {
     let i = 0;
-    while(!!document.getElementById("player-n" + (i+1))){
+    while (!!document.getElementById("player-n" + (i + 1))) {
         i++;
     }
     amountOfPlayers = i;
 }
 
 /* Funcion que obtiene todos los valores de los inputs */
-function getPlayers(){
-    for(let i = 1; i <= amountOfPlayers; i++){
+function getPlayers () {
+    for (let i = 1; i <= amountOfPlayers; i++) {
         let player = document.getElementById("player-n" + i);
         let name = player.value;
         playersName.push(name);
@@ -110,60 +114,60 @@ function getPlayers(){
 }
 
 /* Funcion que genera aleatoriamente los equipos */
-function generateTeams(){
+function generateTeams () {
     let numbers = [];
     let randomNumber = 0;
-    
-    for(let i=0; i<(amountOfPlayers/2); i++){
+
+    for (let i = 0; i < (amountOfPlayers / 2); i++) {
         let repeated = true;
-        
-        do{
+
+        do {
             randomNumber = getRandom(amountOfPlayers);
             repeated = verifyRepeated(randomNumber, numbers);
-        }while(repeated);
+        } while (repeated);
 
         numbers.push(randomNumber);
     }
-    
-    numbers.forEach((pos)=>{
+
+    numbers.forEach((pos) => {
         team1.push(playersName[pos]);
     });
 
-    for(let i=0; i<amountOfPlayers; i++){
-        if(!team1.includes(playersName[i])){
+    for (let i = 0; i < amountOfPlayers; i++) {
+        if (!team1.includes(playersName[i])) {
             team2.push(playersName[i]);
         }
     }
 }
 
 /* Visualizar opcion de compartir */
-function shareSection(active){
+function shareSection (active) {
     let shareSection = document.querySelector(".share");
 
-    if(active){
+    if (active) {
         shareSection.style.display = "flex";
     }
-    else{
+    else {
         shareSection.style.display = "none";
     }
 }
 
 /* Generar mensaje para Whatsapp */
-function shareWhatsapp(){
+function shareWhatsapp () {
     let enter = "%0A";
     let space = "%20";
     let link = "https://api.whatsapp.com/send?text="
 
-    link += "Equipo"+space+"1:"+enter;
+    link += "Equipo" + space + "1:" + enter;
 
-    team1.forEach((player)=>{
-        link+=(player+enter);
+    team1.forEach((player) => {
+        link += (player + enter);
     });
 
-    link += "Equipo"+space+"2:"+enter+enter;
+    link += "Equipo" + space + "2:" + enter + enter;
 
-    team2.forEach((player)=>{
-        link+=(player+enter);
+    team2.forEach((player) => {
+        link += (player + enter);
     });
 
     link += "Hecho con Genefut";
@@ -173,19 +177,19 @@ function shareWhatsapp(){
 }
 
 /* Mostrar u ocultar linea separadora */
-function separateLine(active){
+function separateLine (active) {
     let separateLine = document.querySelector(".line--teams");
-    
-    if(active){
+
+    if (active) {
         separateLine.style.display = "block";
     }
-    else{
+    else {
         separateLine.style.display = "none";
     }
 }
 
 /* Funcion que permite visualizar los equipos */
-function showTeams(){
+function showTeams () {
     separateLine(true);
 
     let team1Container = document.getElementById("team1");
@@ -203,7 +207,7 @@ function showTeams(){
     nameTeam2.textContent = "Equipo 2";
 
     team2Container.appendChild(nameTeam2);
-    
+
     team1.forEach((player) => {
         let namePlayer = document.createElement("p");
         namePlayer.textContent = player;
@@ -212,17 +216,19 @@ function showTeams(){
 
     team2.forEach((player) => {
         let namePlayer = document.createElement("p");
-        namePlayer.textContent = player; 
+        namePlayer.textContent = player;
         team2Container.appendChild(namePlayer);
     });
+
+    document.querySelector('.team_save_button').style.display = 'block'
 }
 
 /* Verificar repetidos en la generación */
-function verifyRepeated(randomNumber, numbers){
+function verifyRepeated (randomNumber, numbers) {
     let boolean = false
 
     numbers.forEach(num => {
-        if(num == randomNumber){
+        if (num == randomNumber) {
             boolean = true;
         }
     });
@@ -230,15 +236,41 @@ function verifyRepeated(randomNumber, numbers){
     return boolean;
 }
 
+function saveTeams () {
+    if (team1.length <= 0 || team2.length <= 0) {
+        alert('Error al enviar\nEquipos vacios!')
+        return;
+    }
+    console.log(team1)
+    console.log(team2)
+
+    const options = {
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8'
+        },
+        body: JSON.stringify({
+            teams: {
+                firstTeam: [...team1],
+                secondTeam: [...team2]
+            },
+            category: amountOfPlayers === 14 ? 'Fútbol 7' : 'Fútbol 5'
+        }),
+        method: "POST"
+    }
+
+    fetch("http://localhost:3000/teams", options)
+        .then(data => console.log(data))
+}
+
 /* Reseteo de formulario */
-function resetForm(){
+function resetForm () {
     let form = document.querySelector(".players_form");
     form.reset();
 
     let i = 0;
-    while(!!document.getElementById("player-n" + (i+1))){
-        let field = document.getElementById("player-n" + (i+1));
-        if(field.style.backgroundColor = errorColor){
+    while (!!document.getElementById("player-n" + (i + 1))) {
+        let field = document.getElementById("player-n" + (i + 1));
+        if (field.style.backgroundColor = errorColor) {
             field.style.backgroundColor = "";
         }
 
@@ -246,12 +278,12 @@ function resetForm(){
     }
 }
 
-function resetElement(element){
+function resetElement (element) {
     while (element.firstChild) {
-      element.removeChild(element.firstChild);
+        element.removeChild(element.firstChild);
     }
 }
 
-function getRandom(amountOfPlayers) {
+function getRandom (amountOfPlayers) {
     return Math.floor(Math.random() * amountOfPlayers);
 }

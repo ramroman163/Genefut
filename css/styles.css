@@ -363,6 +363,27 @@ footer{
     align-items: flex-end;
 }
 
+/* Save part */
+
+.team_save_button{
+    display: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    min-width: 90px;
+    color: var(--white);
+    background: transparent;
+    border: 1px solid var(--white);
+    border-radius: 15px;
+    transition: .3s ease;
+}
+
+.team_save_button:hover{
+    background: rgba(52, 230, 253, 0.2);
+    padding: 10px 25px;
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 1279px) {
