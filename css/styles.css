@@ -31,7 +31,7 @@
 /* Body */
 
 body{
-    background: var(--body-bg-color);
+    background: var(--body-bg-color) !important;
     position: relative;
     min-height: 100vh;
     display: flex;

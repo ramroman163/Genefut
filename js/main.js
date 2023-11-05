@@ -39,6 +39,7 @@ var playersName = [];
 var amountOfPlayers = 0;
 var team1 = [];
 var team2 = [];
+let sendTeams = false
 
 /* Funcion principal */
 function main () {
@@ -115,6 +116,7 @@ function getPlayers () {
 
 /* Funcion que genera aleatoriamente los equipos */
 function generateTeams () {
+    sendTeams = false
     let numbers = [];
     let randomNumber = 0;
 
@@ -258,8 +260,16 @@ function saveTeams () {
         method: "POST"
     }
 
-    fetch("http://localhost:3000/teams", options)
-        .then(data => console.log(data))
+    if (sendTeams === false) {
+        fetch("https://genefut-backend.onrender.com/teams", options)
+            .then(data => data.json())
+            .then(info => {
+                if (info.status === true) {
+                    sendTeams = true
+                    alert('Equipos almacenados!')
+                }
+            })
+    }
 }
 
 /* Reseteo de formulario */
